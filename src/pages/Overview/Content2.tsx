@@ -35,10 +35,10 @@ export const Content2 = () => {
           }}
         >
           <div className="mb-6 text-4xl">멘토를 찾습니다!</div>
-          <div className="text-4xl">
+          <div className="text-2xl md:text-4xl">
             자신의 배움을 나눔해 주실 분을 모집합니다.
           </div>
-          <div className="mb-6 text-4xl">
+          <div className="mb-6 text-2xl md:text-4xl">
             함께 성장하는 기회를 나눔해 주세요.
           </div>
           <button className="px-4 bg-gray-400 text-2xl">신청하기</button>

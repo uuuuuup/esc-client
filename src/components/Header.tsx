@@ -36,7 +36,7 @@ export const Header = () => {
       <div className="">
         {menus.map((menu) => {
           return (
-            <Link className="pr-8" to={menu.link}>
+            <Link className="text-sm md:text-base pr-2 md:pr-8" to={menu.link}>
               {menu.name}
             </Link>
           );
