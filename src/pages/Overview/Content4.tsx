@@ -18,10 +18,8 @@ export const Content4 = () => {
         <button className="block mx-auto my-10 text-2xl">
           1:1 멘토링 신청하기
         </button>
-        <div className="mt-5 mb-5 text-3xl">
-          멘토로서 당신의 배움을 나눠주세요!
-        </div>
-        <div>
+        <div className="mt-5 text-3xl">멘토로서 당신의 배움을 나눠주세요!</div>
+        <div className="mt-5">
           멘토로 활동하며 당신의 배움을 나눠주세요!
           <br /> 멘토로 활동하는 동안 당신의 배움을 맘껏 나눌 수 있도록 적극적인
           지원을 통해 도와드립니다.

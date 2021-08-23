@@ -15,21 +15,23 @@ function App() {
   return (
     <Router>
       <Header></Header>
-      <Switch>
-        <Route path="/Overview">
-          <Overview />
-        </Route>
-        <Route path="/AboutUs">
-          <AboutUs />
-        </Route>
-        <Route path="/Applying">
-          <Applying />
-        </Route>
-        <Route path="/Volunteering">
-          <Volunteering />
-        </Route>
-        <Redirect to="/Overview" />
-      </Switch>
+      <div className="mt-16 sm:mt-24">
+        <Switch>
+          <Route path="/Overview">
+            <Overview />
+          </Route>
+          <Route path="/AboutUs">
+            <AboutUs />
+          </Route>
+          <Route path="/Applying">
+            <Applying />
+          </Route>
+          <Route path="/Volunteering">
+            <Volunteering />
+          </Route>
+          <Redirect to="/Overview" />
+        </Switch>
+      </div>
       <Footer></Footer>
     </Router>
   );
