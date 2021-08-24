@@ -13,7 +13,7 @@ export const Content1 = () => {
         <div className="text-3xl sm:text-6xl text-center">
           우리는 배움을 나눕니다.
         </div>
-        <div className="text-base sm:text-4xl mt-10 ml-4 lg:ml-10">
+        <div className="text-base sm:text-3xl md:text-4xl mt-10 ml-4 md:ml-10">
           <div>E.S.C.란 Education Sharing Center의 약자로</div>
           <div>배움을 나누는 비영리 단체입니다.</div>
         </div>

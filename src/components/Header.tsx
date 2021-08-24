@@ -29,11 +29,23 @@ const menus: IMenuItem[] = [
 ];
 
 export const Header = () => {
+  const createMenu = () => {
+    return menus.map((menu) => {
+      return (
+        <Link className="text-sm md:text-base" to={menu.link}>
+          {menu.name}
+        </Link>
+      );
+    });
+  };
   return (
-    <div className="fixed h-16 sm:h-24 top-0 w-full bg-white z-10 flex items-center">
-      <div className="w-full max-w-7xl m-auto px-4 flex flex-row justify-between items-center">
-        <div className="hidden sm:block font-bold text-2xl">
+    <div className="fixed h-20 sm:h-24 top-0 w-full bg-white z-10 flex flex-col">
+      <div className="w-full max-w-7xl h-full m-auto px-4 flex items-center">
+        <div className="flex-shrink-0 hidden sm:block font-bold text-2xl">
           <Link to="/Overview">E.S.C </Link>
+        </div>
+        <div className="flex-grow hidden sm:flex sm:justify-evenly max-w-2xl mx-auto">
+          {createMenu()}
         </div>
         <button className="block sm:hidden">
           <FontAwesomeIcon icon={faListAlt} size="lg" />
@@ -41,26 +53,15 @@ export const Header = () => {
         <div className="flex-grow block sm:hidden font-bold text-base text-center">
           E.S.C (Education Sharing Club)
         </div>
-        <div className="hidden sm:block mx-4">
-          {menus.map((menu) => {
-            return (
-              <Link
-                className="text-sm md:text-base pr-2 md:pr-8"
-                to={menu.link}
-              >
-                {menu.name}
-              </Link>
-            );
-          })}
-        </div>
-        <div className="flex flex-row">
-          <button>
-            <FontAwesomeIcon icon={faSearch} size="lg" />
-          </button>
-          <button className="pl-4 hidden sm:block">
-            <FontAwesomeIcon icon={faUser} size="lg" />
-          </button>
-        </div>
+        <button className="flex-shrink-0">
+          <FontAwesomeIcon icon={faSearch} size="lg" />
+        </button>
+        <button className="flex-shrink-0 pl-4 hidden sm:block">
+          <FontAwesomeIcon icon={faUser} size="lg" />
+        </button>
+      </div>
+      <div className="flex justify-between sm:hidden w-full max-w-xs mx-auto p-1">
+        {createMenu()}
       </div>
     </div>
   );
