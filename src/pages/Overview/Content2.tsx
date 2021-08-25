@@ -8,7 +8,7 @@ import { Carousel } from "react-responsive-carousel";
 export const Content2 = () => {
   return (
     <div className="mt-20">
-      <Carousel autoPlay infiniteLoop swipeable emulateTouch>
+      <Carousel autoPlay infiniteLoop swipeable emulateTouch showThumbs={false}>
         <div
           className="w-full h-full flex flex-col justify-center items-center text-white"
           style={{

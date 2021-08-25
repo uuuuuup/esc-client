@@ -17,22 +17,22 @@ function App() {
       <Header></Header>
       <div className="mt-20 sm:mt-24">
         <Switch>
-          <Route path="/Overview">
+          <Route path="/overview">
             <Overview />
           </Route>
-          <Route path="/AboutUs">
+          <Route path="/about-us">
             <AboutUs />
           </Route>
-          <Route path="/Applying">
+          <Route path="/applying">
             <Applying />
           </Route>
-          <Route path="/Volunteering">
+          <Route path="/volunteering">
             <Volunteering />
           </Route>
-          <Redirect to="/Overview" />
+          <Redirect to="/overview" />
         </Switch>
+        <Footer></Footer>
       </div>
-      <Footer></Footer>
     </Router>
   );
 }

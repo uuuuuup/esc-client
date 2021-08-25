@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faListAlt } from "@fortawesome/free-regular-svg-icons";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faListAlt, faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
@@ -12,19 +11,19 @@ interface IMenuItem {
 const menus: IMenuItem[] = [
   {
     name: "Overview",
-    link: "/Overview",
+    link: "/overview",
   },
   {
     name: "About us",
-    link: "/AboutUs",
+    link: "/about-us",
   },
   {
     name: "Applying",
-    link: "/Applying",
+    link: "/applying",
   },
   {
     name: "Volunteering",
-    link: "/Volunteering",
+    link: "/volunteering",
   },
 ];
 
@@ -32,7 +31,7 @@ export const Header = () => {
   const createMenu = () => {
     return menus.map((menu) => {
       return (
-        <Link className="text-sm md:text-base" to={menu.link}>
+        <Link className="text-sm md:text-base" to={menu.link} key={menu.name}>
           {menu.name}
         </Link>
       );
