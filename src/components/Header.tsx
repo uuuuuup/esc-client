@@ -4,7 +4,7 @@ import { faListAlt, faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useReactiveVar } from "@apollo/client";
-import { isSignedVar, tokenVar, userVar } from "../apollo";
+import { isSignedVar, tokenVar, profileVar } from "../apollo";
 import { menus } from "./Menus";
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
@@ -52,7 +52,7 @@ export const Header = () => {
                 onClick={() => {
                   isSignedVar(false);
                   tokenVar(null);
-                  userVar(null);
+                  profileVar(null);
                 }}
               >
                 <FontAwesomeIcon icon={faSignOutAlt} size="lg" />

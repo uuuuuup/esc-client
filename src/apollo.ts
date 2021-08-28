@@ -1,13 +1,14 @@
 import { ApolloClient, InMemoryCache, makeVar } from "@apollo/client";
 
-export interface IUser {
+export interface IProfile {
   name: string;
   email: string;
+  picture: string;
 }
 
 export const isSignedVar = makeVar(false);
 export const tokenVar = makeVar<string | null>(null);
-export const userVar = makeVar<IUser | null>(null);
+export const profileVar = makeVar<IProfile | null>(null);
 
 export const client = new ApolloClient({
   uri: `http://${window.location.hostname}:4000/graphql`,
@@ -25,9 +26,9 @@ export const client = new ApolloClient({
               return tokenVar();
             },
           },
-          user: {
+          profile: {
             read() {
-              return userVar();
+              return profileVar();
             },
           },
         },

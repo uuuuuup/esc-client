@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { gql } from "@apollo/client";
 import { useToasts } from "react-toast-notifications";
 
-import { client, isSignedVar, tokenVar, userVar } from "../apollo";
+import { client, isSignedVar, tokenVar, profileVar } from "../apollo";
 
 const SIGN_IN_MUTATION = gql`
   mutation ($input: SignInInput!) {
@@ -12,9 +12,10 @@ const SIGN_IN_MUTATION = gql`
       ok
       error
       token
-      user {
+      profile {
         name
         email
+        picture
       }
     }
   }
@@ -39,17 +40,18 @@ export const SignIn = () => {
             },
           },
         });
-        const { ok, error, token, user } = gqlResult.data.signIn;
-        if (ok) {
-          addToast(`Welcome, ${user.name}`, {
+        const { ok, error, token, profile } = gqlResult.data.signIn;
+        if (ok && profile) {
+          addToast(`Welcome, ${profile.name}`, {
             appearance: "success",
             autoDismiss: true,
           });
           isSignedVar(true);
           tokenVar(token);
-          userVar({
-            name: user.name,
-            email: user.email,
+          profileVar({
+            name: profile.name,
+            email: profile.email,
+            picture: profile.picture,
           });
           history.push("/");
         } else {

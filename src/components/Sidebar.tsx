@@ -1,6 +1,6 @@
 import { gql, useQuery, useReactiveVar } from "@apollo/client";
 import { useHistory } from "react-router-dom";
-import { isSignedVar, tokenVar, userVar } from "../apollo";
+import { isSignedVar, tokenVar, profileVar } from "../apollo";
 import { menus } from "./Menus";
 
 import defaultProfileImg from "../resources/icons/default_profile.png";
@@ -10,11 +10,12 @@ interface SidebarProps {
   onClose: () => void;
 }
 
-const USER_QUERY = gql`
+const PROFILE_QUERY = gql`
   query {
-    user {
+    profile {
       name
       email
+      picture
     }
   }
 `;
@@ -22,7 +23,7 @@ const USER_QUERY = gql`
 export const Sidebar = ({ show, onClose }: SidebarProps) => {
   const isSigned = useReactiveVar(isSignedVar);
   const history = useHistory();
-  const { data } = useQuery(USER_QUERY);
+  const { data } = useQuery(PROFILE_QUERY);
 
   const createMenu = () => {
     return menus.map((menu) => {
@@ -62,17 +63,17 @@ export const Sidebar = ({ show, onClose }: SidebarProps) => {
         >
           <img
             className="w-10 h-10 rounded-full"
-            src={defaultProfileImg}
+            src={data?.profile?.picture ?? defaultProfileImg}
             alt=""
           ></img>
           {isSigned ? (
             <div className="mt-4 flex justify-between">
-              <div>{`Welcome, ${data?.user?.name}`}</div>
+              <div>{`Welcome, ${data?.profile?.name}`}</div>
               <button
                 onClick={() => {
                   isSignedVar(false);
                   tokenVar(null);
-                  userVar(null);
+                  profileVar(null);
                 }}
               >
                 Logout
