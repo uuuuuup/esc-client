@@ -1,9 +1,9 @@
 import { ApolloClient, InMemoryCache, makeVar } from "@apollo/client";
 
-export const isSignedVar = makeVar(true);
+export const isSignedVar = makeVar(0);
 
 export const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: `http://${window.location.hostname}:4000/graphql`,
   cache: new InMemoryCache({
     typePolicies: {
       Query: {

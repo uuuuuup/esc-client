@@ -10,6 +10,8 @@ import { AboutUs } from "./pages/AboutUs/AboutUs";
 import { Applying } from "./pages/Applying/Applying";
 import { Overview } from "./pages/Overview/Overview";
 import { Volunteering } from "./pages/Volunteering/Volunteering";
+import { SignIn } from "./pages/SignIn";
+import { SignUp } from "./pages/SignUp";
 
 function App() {
   return (
@@ -28,6 +30,12 @@ function App() {
           </Route>
           <Route path="/volunteering">
             <Volunteering />
+          </Route>
+          <Route path="/sign-in">
+            <SignIn />
+          </Route>
+          <Route path="/sign-up">
+            <SignUp />
           </Route>
           <Redirect to="/overview" />
         </Switch>
