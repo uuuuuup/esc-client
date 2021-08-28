@@ -4,9 +4,9 @@ import { useHistory } from "react-router-dom";
 import { gql } from "@apollo/client";
 import { useToasts } from "react-toast-notifications";
 
-import { client, isSignedVar } from "../apollo";
+import { client, isSignedVar, tokenVar, userVar } from "../apollo";
 
-const SIGN_IN = gql`
+const SIGN_IN_MUTATION = gql`
   mutation ($input: SignInInput!) {
     signIn(input: $input) {
       ok
@@ -32,7 +32,7 @@ export const SignIn = () => {
       if (result.credential) {
         var credential = result.credential as firebase.auth.OAuthCredential;
         const gqlResult = await client.mutate({
-          mutation: SIGN_IN,
+          mutation: SIGN_IN_MUTATION,
           variables: {
             input: {
               accessToken: credential.accessToken,
@@ -41,11 +41,16 @@ export const SignIn = () => {
         });
         const { ok, error, token, user } = gqlResult.data.signIn;
         if (ok) {
-          addToast(`Welcome, ${user?.name}`, {
+          addToast(`Welcome, ${user.name}`, {
             appearance: "success",
             autoDismiss: true,
           });
           isSignedVar(true);
+          tokenVar(token);
+          userVar({
+            name: user.name,
+            email: user.email,
+          });
           history.push("/");
         } else {
           addToast(`Fail to Sign-In: ${error}`, {
