@@ -8,12 +8,12 @@ import { Content6 } from "./Content6";
 export const Overview = () => {
   return (
     <div>
-      <Content1></Content1>
-      <Content2></Content2>
-      <Content3></Content3>
-      <Content4></Content4>
-      <Content5></Content5>
-      <Content6></Content6>
+      <Content1 />
+      <Content2 />
+      <Content3 />
+      <Content4 />
+      <Content5 />
+      <Content6 />
     </div>
   );
 };

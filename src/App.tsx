@@ -4,6 +4,8 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import { ToastProvider } from "react-toast-notifications";
+
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { AboutUs } from "./pages/AboutUs/AboutUs";
@@ -15,33 +17,35 @@ import { SignUp } from "./pages/SignUp";
 
 function App() {
   return (
-    <Router>
-      <Header></Header>
-      <div className="mt-20 sm:mt-24">
-        <Switch>
-          <Route path="/overview">
-            <Overview />
-          </Route>
-          <Route path="/about-us">
-            <AboutUs />
-          </Route>
-          <Route path="/applying">
-            <Applying />
-          </Route>
-          <Route path="/volunteering">
-            <Volunteering />
-          </Route>
-          <Route path="/sign-in">
-            <SignIn />
-          </Route>
-          <Route path="/sign-up">
-            <SignUp />
-          </Route>
-          <Redirect to="/overview" />
-        </Switch>
-        <Footer></Footer>
-      </div>
-    </Router>
+    <ToastProvider>
+      <Router>
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <Switch>
+            <Route path="/overview">
+              <Overview />
+            </Route>
+            <Route path="/about-us">
+              <AboutUs />
+            </Route>
+            <Route path="/applying">
+              <Applying />
+            </Route>
+            <Route path="/volunteering">
+              <Volunteering />
+            </Route>
+            <Route path="/sign-in">
+              <SignIn />
+            </Route>
+            <Route path="/sign-up">
+              <SignUp />
+            </Route>
+            <Redirect to="/overview" />
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    </ToastProvider>
   );
 }
 

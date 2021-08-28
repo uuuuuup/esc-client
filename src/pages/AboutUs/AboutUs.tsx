@@ -1,3 +1,3 @@
 export const AboutUs = () => {
-  return <div>AboutUs</div>;
+  return <div className="flex-grow bg-gray-100">AboutUs</div>;
 };

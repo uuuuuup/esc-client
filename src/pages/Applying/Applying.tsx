@@ -1,3 +1,3 @@
 export const Applying = () => {
-  return <div>Applying</div>;
+  return <div className="flex-grow bg-gray-100">Applying</div>;
 };

@@ -1,3 +1,3 @@
 export const Volunteering = () => {
-  return <div>Volunteering</div>;
+  return <div className="flex-grow bg-gray-100">Volunteering</div>;
 };

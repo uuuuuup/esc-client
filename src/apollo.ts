@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache, makeVar } from "@apollo/client";
 
-export const isSignedVar = makeVar(0);
+export const isSignedVar = makeVar(false);
 
 export const client = new ApolloClient({
   uri: `http://${window.location.hostname}:4000/graphql`,

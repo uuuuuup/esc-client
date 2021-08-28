@@ -33,12 +33,10 @@ export const Footer = () => {
         </div>
       </div>
       {showPrivatePolicyPopup && (
-        <PrivatePolicy
-          onClose={() => setShowPrivatePolicyPopup(false)}
-        ></PrivatePolicy>
+        <PrivatePolicy onClose={() => setShowPrivatePolicyPopup(false)} />
       )}
       {showTermsOfUsePopup && (
-        <TermsOfUse onClose={() => setTermsOfUsePopup(false)}></TermsOfUse>
+        <TermsOfUse onClose={() => setTermsOfUsePopup(false)} />
       )}
     </>
   );

@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 import { useHistory } from "react-router-dom";
 import { client } from "../apollo";
 import { gql } from "@apollo/client";
+import { useToasts } from "react-toast-notifications";
 
 const SIGN_UP = gql`
   mutation ($input: SignUpInput!) {
@@ -19,7 +20,9 @@ const SIGN_UP = gql`
 `;
 
 export const SignUp = () => {
+  const { addToast } = useToasts();
   const history = useHistory();
+
   useEffect(() => {
     const handleStateChange = async (user: firebase.User | null) => {
       if (!user) return;
@@ -35,11 +38,18 @@ export const SignUp = () => {
             },
           },
         });
-        const { ok, error, token } = gqlResult.data.signUp;
+        const { ok, error, token, user } = gqlResult.data.signUp;
         if (ok) {
+          addToast(`Welcome, ${user?.name}`, {
+            appearance: "success",
+            autoDismiss: true,
+          });
           history.push("/");
         } else {
-          alert(error);
+          addToast(`Fail to Sign-Up: ${error}`, {
+            appearance: "error",
+            autoDismiss: true,
+          });
         }
       }
     };
@@ -47,7 +57,7 @@ export const SignUp = () => {
     return () => unsubscribe();
   }, []);
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center">
+    <div className="flex-grow bg-gray-100 w-full flex flex-col justify-center items-center">
       <button
         onClick={() => {
           var provider = new firebase.auth.GoogleAuthProvider();
@@ -55,7 +65,7 @@ export const SignUp = () => {
           firebase.auth().signInWithRedirect(provider);
         }}
       >
-        회원가입 with Google
+        구글계정으로 회원가입
       </button>
     </div>
   );
