@@ -48,7 +48,7 @@ export const Header = () => {
   return (
     <div className="sticky h-20 sm:h-24 top-0 w-full bg-white z-10 flex flex-col">
       <div className="w-full max-w-7xl h-full m-auto px-4 flex items-center">
-        <div className="flex-shrink-0 hidden sm:block font-bold text-2xl">
+        <div className="hidden sm:block font-bold text-2xl">
           <Link to="/Overview">E.S.C </Link>
         </div>
         <div className="flex-grow hidden sm:flex sm:justify-evenly max-w-2xl mx-auto">
@@ -60,22 +60,16 @@ export const Header = () => {
         <div className="flex-grow block sm:hidden font-bold text-base text-center">
           E.S.C (Education Sharing Club)
         </div>
-        <button className="flex-shrink-0">
+        <button>
           <FontAwesomeIcon icon={faSearch} size="lg" />
         </button>
-        <div className="hidden sm:block">
+        <div className="hidden sm:block pl-4">
           {isSigned ? (
-            <button
-              className="flex-shrink-0 pl-4"
-              onClick={() => isSignedVar(false)}
-            >
+            <button onClick={() => isSignedVar(false)}>
               <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
             </button>
           ) : (
-            <button
-              className="flex-shrink-0 pl-4"
-              onClick={() => history.push("/sign-in")}
-            >
+            <button onClick={() => history.push("/sign-in")}>
               <FontAwesomeIcon icon={faUser} size="lg" />
             </button>
           )}
