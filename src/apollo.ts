@@ -11,7 +11,7 @@ export const tokenVar = makeVar<string | null>(null);
 export const profileVar = makeVar<IProfile | null>(null);
 
 export const client = new ApolloClient({
-  uri: `http://${window.location.hostname}:4000/graphql`,
+  uri: `https://${window.location.hostname}:4000/graphql`,
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
